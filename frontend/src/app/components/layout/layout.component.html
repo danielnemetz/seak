@@ -1,0 +1,61 @@
+@let loading = this.loading();
+@let errors = this.errors();
+@let persons = this.persons();
+@let selectedPerson = this.selectedPerson();
+@let selectedDate = this.selectedDate();
+@let arbeitszeiten = this.arbeitszeiten();
+@let planzeiten = this.planzeiten();
+
+<div class="layout-container">
+  <!-- Header -->
+  <mat-toolbar class="header">
+    <h1 class="app-title">Testanwendung</h1>
+  </mat-toolbar>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Loading Spinner -->
+    @if (loading) {
+      <div class="loading-container">
+        <mat-spinner></mat-spinner>
+        <p>Daten werden geladen...</p>
+      </div>
+    }
+
+    <!-- Error Message -->
+    @if (errors.length > 0) {
+      <div class="error-container">
+        <p class="error-message">Fehler beim Laden der Daten: {{ errors }}</p>
+      </div>
+    }
+
+    <!-- Content when not loading and no error -->
+    @if (!loading && errors.length === 0) {
+      <!-- Upper Panels Section -->
+      <div class="panels-section">
+        <!-- Personen Panel -->
+        <app-person
+          [persons]="persons || []"
+          [selectedPerson]="selectedPerson"
+          (personSelected)="onPersonSelect($event)"
+        ></app-person>
+
+        <!-- Datum Panel -->
+        <app-date-picker
+          [selectedDate]="selectedDate"
+          (dateChanged)="onDateChange($event)"
+        ></app-date-picker>
+
+        <!-- Monat/Arbeitszeit Panel -->
+        <app-arbeitszeit
+          [arbeitszeiten]="arbeitszeiten || []"
+        ></app-arbeitszeit>
+      </div>
+
+      <!-- Planung Section -->
+      <div class="table-section">
+        <app-planung [planzeiten]="planzeiten || []"></app-planung>
+      </div>
+    }
+  </div>
+</div>

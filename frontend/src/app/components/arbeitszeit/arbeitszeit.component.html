@@ -1,0 +1,25 @@
+<mat-card class="panel-card">
+  <mat-card-header>
+    <mat-card-title
+      >Arbeitszeit {{ selectedDate | date: "yyyy" }}</mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <table class="month-table">
+      <thead>
+        <tr>
+          <th>Monat</th>
+          <th>Arbeitszeit</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (arbeit of arbeitszeitenWithCurrentMonth(); track arbeit.id) {
+          <tr [class.current-month]="arbeit.isCurrentMonth">
+            <td>{{ arbeit.monat }}</td>
+            <td>{{ arbeit.stunden }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

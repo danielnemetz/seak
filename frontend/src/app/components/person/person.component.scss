@@ -1,0 +1,39 @@
+@use "../../../styles/variables" as *;
+
+.panel-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.person-list {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-small;
+}
+
+.person-item {
+  padding: $gap-small 12px;
+  border-radius: $border-radius-small;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  border: 1px solid $color-border;
+
+  &:hover {
+    background-color: $color-hover;
+  }
+
+  &.selected {
+    background-color: $color-selected;
+    border-color: $color-primary;
+    color: $color-primary;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .panel-card {
+    min-width: 100%;
+    max-width: none;
+  }
+}

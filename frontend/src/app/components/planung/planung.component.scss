@@ -1,0 +1,148 @@
+@use "../../../styles/variables" as *;
+
+.table-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.table-card mat-card-header {
+  flex-shrink: 0;
+  padding: $gap-medium;
+  background-color: #fafafa;
+  border-bottom: 1px solid $color-border;
+}
+
+.table-card mat-card-content {
+  flex: 1;
+  padding: 0;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.table-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.table-header {
+  flex-shrink: 0;
+  background-color: #fafafa;
+  border-bottom: 2px solid $color-border;
+  z-index: 10;
+}
+
+.table-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.planning-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.planning-table th {
+  font-weight: 600;
+  color: $color-text-secondary;
+  padding: $gap-medium;
+  border-bottom: 1px solid $color-border;
+  text-align: left;
+  background-color: #fafafa;
+}
+
+.planning-table td {
+  padding: $gap-medium;
+  border-bottom: 1px solid $color-border;
+  color: $color-text-primary;
+}
+
+.planning-table th:nth-child(1),
+.planning-table td:nth-child(1) {
+}
+
+.planning-table th:nth-child(2),
+.planning-table td:nth-child(2) {
+}
+
+.planning-table th:nth-child(3),
+.planning-table td:nth-child(3) {
+}
+
+.planning-table th:nth-child(4),
+.planning-table td:nth-child(4) {
+  width: 30%;
+}
+
+.einsatz-header {
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .grid-toggle {
+    transform: scale(0.7);
+    transform-origin: left center;
+  }
+}
+
+.table-row {
+  height: 48px;
+}
+
+.table-row:hover {
+  background-color: $color-hover;
+}
+
+.current-day {
+  background-color: $color-selected;
+  font-weight: 500;
+
+  td {
+    color: $color-primary;
+  }
+}
+
+.einsatz-value {
+  font-weight: 500;
+  color: $color-primary;
+  background-color: $color-selected;
+  padding: 4px $gap-small;
+  border-radius: $border-radius-small;
+  font-size: $font-size-small;
+  display: inline-block;
+  min-width: 40px;
+  text-align: center;
+}
+
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .planning-table th,
+  .planning-table td {
+    padding: $gap-small;
+    font-size: $font-size-small;
+  }
+
+  .einsatz-value {
+    padding: 2px 6px;
+    font-size: 0.8rem;
+  }
+
+  .einsatz-header .grid-toggle .toggle-label {
+    display: none;
+  }
+}

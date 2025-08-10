@@ -1,0 +1,112 @@
+@use "../../../styles/variables" as *;
+
+.layout-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $background-main;
+  overflow: visible;
+}
+
+.header {
+  background-color: $background-header;
+  color: white;
+  box-shadow: $shadow-light;
+  z-index: 1000;
+  flex-shrink: 0;
+
+  .app-title {
+    font-size: $font-size-title;
+    font-weight: 500;
+  }
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  min-height: 0;
+}
+
+.panels-section {
+  display: flex;
+  justify-content: space-between;
+  gap: $gap-medium;
+  flex-wrap: wrap;
+  padding: $gap-medium;
+  background-color: $background-main;
+  flex-shrink: 0;
+  border-bottom: 1px solid $color-border;
+
+  > * {
+    flex: 1 1 auto;
+  }
+}
+
+.table-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 450px;
+}
+
+.table-section > app-planung {
+  flex: 1;
+  min-height: 0;
+  display: block;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: $gap-medium;
+
+  p {
+    color: $color-text-secondary;
+    font-size: $font-size-large;
+  }
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: $gap-large;
+
+  .error-message {
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: $gap-medium;
+    border-radius: $border-radius-small;
+    border: 1px solid #ffcdd2;
+    font-size: $font-size-large;
+    text-align: center;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: $breakpoint-desktop) {
+  .panels-section {
+    > * {
+      flex: 1 1 calc(50% - 10px);
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .panels-section {
+    padding: $gap-small;
+    gap: $gap-small;
+    justify-content: center;
+
+    > * {
+      flex: 1 1 100%;
+    }
+  }
+}

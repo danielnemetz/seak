@@ -1,0 +1,29 @@
+<div class="time-visualization">
+  <div class="time-container">
+    <div class="total-time-background" [class.no-border]="!showGrid()"></div>
+
+    @if (showGrid()) {
+      <div class="hour-grid">
+        @for (hour of hourLines(); track hour.hour) {
+          <div class="hour-line" [style.left]="hour.position"></div>
+        }
+      </div>
+    }
+
+    @if (hasWorkTime()) {
+      @let workLeft = workTimeLeft();
+      @let workWidth = workTimeWidth();
+      <div class="work-time" [style.left]="workLeft" [style.width]="workWidth">
+        @if (hasBreakTime()) {
+          @let breakLeft = breakTimeLeft();
+          @let breakWidth = breakTimeWidth();
+          <div
+            class="break-time"
+            [style.left]="breakLeft"
+            [style.width]="breakWidth"
+          ></div>
+        }
+      </div>
+    }
+  </div>
+</div>

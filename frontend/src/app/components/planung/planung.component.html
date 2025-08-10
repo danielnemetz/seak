@@ -1,0 +1,55 @@
+<mat-card class="table-card">
+  <mat-card-header>
+    <mat-card-title>Planung</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-wrapper">
+      <div class="table-header">
+        <table class="planning-table">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Planung</th>
+              <th>Pause</th>
+              <th class="einsatz-header">
+                <div class="header-content">
+                  <span>Einsatz</span>
+                  <mat-slide-toggle
+                    [checked]="showGrid"
+                    (change)="toggleGrid($event)"
+                    class="grid-toggle"
+                    color="primary"
+                    [matTooltip]="'Stunden Raster anzeigen'"
+                    matTooltipPosition="below"
+                  ></mat-slide-toggle>
+                </div>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="table-scroll">
+        <table class="planning-table">
+          <tbody>
+            @for (planzeit of planzeitenWithCurrentDay(); track $index) {
+              <tr class="table-row" [class.current-day]="planzeit.isCurrentDay">
+                <td>{{ planzeit.tag }}</td>
+                <td>{{ planzeit.planung }}</td>
+                <td>{{ planzeit.pause }}</td>
+                <td>
+                  <app-time-visualization
+                    [workTime]="planzeit.workTime"
+                    [breakTime]="planzeit.breakTime"
+                    [showGrid]="showGrid"
+                  >
+                  </app-time-visualization>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

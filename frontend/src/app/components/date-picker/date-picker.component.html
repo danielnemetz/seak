@@ -1,0 +1,18 @@
+<mat-card class="panel-card">
+  <mat-card-header>
+    <mat-card-title>Datum:</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [ngModel]="selectedDate()"
+        name="selectedDate"
+        (ngModelChange)="onDateChange($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>

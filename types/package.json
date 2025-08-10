@@ -1,0 +1,22 @@
+{
+  "name": "@seak/types",
+  "version": "1.0.0",
+  "description": "Shared types for SEAK project",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "echo 'No linting configured for types package'",
+    "lint:fix": "echo 'No linting configured for types package'",
+    "format": "prettier --write \"*.ts\"",
+    "format:check": "prettier --check \"*.ts\"",
+    "test": "echo 'No tests configured for types package'"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.2",
+    "prettier": "^3.6.2"
+  }
+}

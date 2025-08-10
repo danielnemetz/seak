@@ -1,0 +1,18 @@
+@use "../../../styles/variables" as *;
+
+.panel-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .panel-card {
+    min-width: 100%;
+    max-width: none;
+  }
+}

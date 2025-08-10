@@ -1,0 +1,18 @@
+<mat-card class="panel-card">
+  <mat-card-header>
+    <mat-card-title>Personen:</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="person-list">
+      @for (person of persons(); track person.id) {
+        <div
+          class="person-item"
+          [class.selected]="selectedPerson()?.id === person.id"
+          (click)="onPersonSelect(person)"
+        >
+          {{ person.name }}
+        </div>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>
